@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "audit_title": "Agentic Commerce Readiness Audit \u2014 Beauty Edition 1",
+    "store_name": "Ilia Beauty",
+    "store_url": "https://iliabeauty.com",
+    "audit_date": "2026-04-18",
+    "sampling_scope": "3 PDPs / 5 titles / sitemap + robots.txt + homepage",
+    "evidence_method": "source-level <code>httpx</code> fetch"
+  },
+  "score": {
+    "total": 2,
+    "max": 9,
+    "shape_label": "Not Ready \u2014 multiple foundation gaps",
+    "description": "Missing at multiple layers. Start with crawlability and structured data basics before content polish."
+  },
+  "areas": [
+    {
+      "num": 1,
+      "name": "Crawlability",
+      "score": 2,
+      "max": 3,
+      "passed": [
+        "C1",
+        "C3"
+      ]
+    },
+    {
+      "num": 2,
+      "name": "Structured data",
+      "score": 0,
+      "max": 4,
+      "passed": []
+    },
+    {
+      "num": 3,
+      "name": "Content quality",
+      "score": 0,
+      "max": 2,
+      "passed": []
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "title": "AI crawler access",
+      "area": 1,
+      "status": "pass",
+      "one_liner": "All 8 tested AI bots allowed in <code>robots.txt</code>.",
+      "log_summary": "<strong>AI crawler access.</strong> <code>robots.txt</code> allows all 8 tested bots (GPTBot / PerplexityBot / ClaudeBot / anthropic-ai / Google-Extended / Amazonbot / CCBot / FacebookBot)."
+    },
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "area": 1,
+      "status": "fail",
+      "one_liner": "Only 0/3 sampled PDPs render all core elements in raw HTML.",
+      "log_summary": "<strong>PDP server-side render.</strong> 0/3 sampled PDPs return complete product data without JS. Others missing one or more of title/price/description."
+    },
+    {
+      "id": "C3",
+      "title": "Sitemap freshness",
+      "area": 1,
+      "status": "pass",
+      "one_liner": "Sitemap has 7 URLs with fresh <code>&lt;lastmod&gt;</code> timestamps.",
+      "log_summary": "<strong>Sitemap freshness.</strong> Valid sitemap with 7 recently-updated URLs (most recent: 2026-04-16T21:24:26-07:00)."
+    },
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "0/3 PDPs have complete Product JSON-LD.",
+      "log_summary": "<strong>Product schema.</strong> 0/3 PDPs ship complete <code>Product</code> JSON-LD. Others missing required fields or the block entirely."
+    },
+    {
+      "id": "C5",
+      "title": "AggregateRating",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "0/3 PDPs ship Review or AggregateRating schema.",
+      "log_summary": "<strong>AggregateRating.</strong> 0/3 PDPs carry rating schema. Reviews likely displayed visually but not exposed as structured data on others."
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "No <code>FAQPage</code> or <code>HowTo</code> schema on checked pages.",
+      "log_summary": "<strong>FAQPage / HowTo schema.</strong> Not present on homepage or auxiliary help pages."
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "Organization schema missing: <code>name</code>, <code>url</code>, <code>sameAs</code>.",
+      "log_summary": "<strong>Organization schema.</strong> Missing <code>name</code>, <code>url</code>, <code>sameAs</code> on homepage."
+    },
+    {
+      "id": "C8",
+      "title": "PDP titles",
+      "area": 3,
+      "status": "fail",
+      "one_liner": "2/3 sampled titles include differentiator cues.",
+      "log_summary": "<strong>PDP titles.</strong> 2/3 sampled titles go beyond brand + generic category."
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "area": 3,
+      "status": "fail",
+      "one_liner": "3/3 descriptions answer buyer-context questions.",
+      "log_summary": "<strong>PDP descriptions.</strong> 3/3 sampled descriptions cover 3+ buyer-context cues. Others are spec-heavy with limited context."
+    }
+  ],
+  "findings": [
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs via raw HTML fetch"
+        },
+        {
+          "label": "Found",
+          "content": "3 of 3 PDPs don't render all core fields in raw HTML. Missing: title. Examples: <code>the-protect-blur-duo</code>, <code>the-sketch-glaze-lip-combo</code>."
+        },
+        {
+          "label": "Fix",
+          "content": "Audit the product-template rendering path to confirm title/price/description appear in raw HTML without JS. Agents cannot execute JavaScript on merchant sites."
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs \u2014 raw HTML via source-level fetch"
+        },
+        {
+          "label": "Found",
+          "content": "Only 0/3 PDPs ship complete <code>Product</code> JSON-LD with all commonly-recommended fields (name, image, brand, offers.price, offers.availability, and an identifier)."
+        },
+        {
+          "label": "Fix",
+          "content": "Ensure every PDP template emits <code>Product</code> JSON-LD with the Google rich-results minimum fields. See <a href=\"https://developers.google.com/search/docs/appearance/structured-data/product\" target=\"_blank\">Google's product structured-data docs</a>."
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "title": "AggregateRating",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs \u2014 <code>Review</code> / <code>AggregateRating</code> schema"
+        },
+        {
+          "label": "Found",
+          "content": "0/3 PDPs expose rating data as JSON-LD with real <code>ratingValue</code> and <code>reviewCount</code>. Others likely display reviews visually but don't emit structured data \u2014 typically a widget toggle that hasn't been enabled."
+        },
+        {
+          "label": "Fix",
+          "content": "Enable review-schema output in your review plugin (Yotpo, Judge.me, Okendo, etc.) \u2014 often a single setting. See <a href=\"https://schema.org/AggregateRating\" target=\"_blank\">schema.org/AggregateRating</a>."
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Homepage and discoverable FAQ / how-to-use / about pages"
+        },
+        {
+          "label": "Found",
+          "content": "No <code>FAQPage</code> or <code>HowTo</code> JSON-LD detected. If your store publishes how-to / routine content, it's currently invisible as structured data."
+        },
+        {
+          "label": "Fix",
+          "content": "Wrap existing FAQ content in <code>FAQPage</code> JSON-LD and any routine / tutorial content in <code>HowTo</code> JSON-LD. These map directly to the \"how do I use X\" queries AI shopping agents handle. <a href=\"https://schema.org/FAQPage\" target=\"_blank\">schema.org/FAQPage</a> / <a href=\"https://schema.org/HowTo\" target=\"_blank\">HowTo</a>."
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Homepage for <code>Organization</code> JSON-LD"
+        },
+        {
+          "label": "Found",
+          "content": "Organization schema missing or incomplete. Missing: <code>name</code>, <code>url</code>, <code>sameAs</code>. <code>sameAs</code> should link to at least 2 social profiles for entity recognition."
+        },
+        {
+          "label": "Fix",
+          "content": "Add (or extend) <code>Organization</code> JSON-LD in the site-wide <code>&lt;head&gt;</code>: <code>name</code>, <code>url</code>, <code>logo</code>, and a <code>sameAs</code> array of verified social-profile URLs. Low risk, high leverage for AI entity recognition."
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "title": "PDP titles",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 PDP titles sampled from the sitemap"
+        },
+        {
+          "label": "Found",
+          "content": "Only 2/3 titles include specific use-case, target audience, or differentiator cues. Examples: \"ILIA Barrier Build Skin Protectant Cream | ILIA Beauty\", \"The Art of the Eye Trio\"."
+        },
+        {
+          "label": "Fix",
+          "content": "Expand generic titles (\"Brand Name Face Cream\") with specific differentiators (\"Retinol Alternative Night Serum for Sensitive Skin\"). Titles match the natural-language shopper queries AI agents parse."
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs \u2014 full description text"
+        },
+        {
+          "label": "Found",
+          "content": "3/3 descriptions cover 3+ of: target skin/fit type, comparison to similar products, ingredient/material rationale, sizing reasoning, usage guidance, counter-indications. Most are spec-heavy with limited buyer context."
+        },
+        {
+          "label": "Caveat",
+          "content": "Evaluation via rendered-response text. Descriptions may include buyer-context content in expandable sections or tabs that weren't surfaced."
+        },
+        {
+          "label": "Fix",
+          "content": "Add a structured \"Why you'll love it\" block to every PDP \u2014 who it's for, how it compares, when to use, what it isn't for. At catalog scale this is a content pipeline (LLM-assisted generation from existing spec sheets is plausible)."
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "title": "Ship complete <code>Product</code> JSON-LD on every PDP",
+      "description": "Highest-leverage structured-data change. Ensures AI agents can extract name, price, availability, and identifiers cleanly. Lightweight if product data already exists server-side."
+    },
+    {
+      "title": "Enable <code>AggregateRating</code> output in your review plugin",
+      "description": "Usually a single setting in Yotpo / Judge.me / Okendo that exposes existing review data as JSON-LD. Reviews already live on the site \u2014 this just makes them machine-readable."
+    },
+    {
+      "title": "Add complete <code>Organization</code> JSON-LD with <code>sameAs</code>",
+      "description": "10-line site-wide <code>&lt;head&gt;</code> addition \u2014 name, url, logo, and links to verified social profiles. Low risk, foundational for AI entity recognition."
+    }
+  ],
+  "real_story": {
+    "heading": "The real story",
+    "paragraphs": [
+      "Ilia Beauty has foundational gaps that limit agent visibility.",
+      "A 2/9 score means multiple layers need attention. Prioritize structured-data basics (C2, C4, C5) before content-level work."
+    ]
+  },
+  "disclosure": "Part of the Nohi Agentic Commerce Readiness Index 2026 \u2014 Edition 1 (Premium DTC Beauty, 40 brands). Scoring via the <code>score_brand.py</code> audit tool on 2026-04-18. Findings are sample-based (3 PDPs / 5 titles). Does not audit uniqueness (C10, deferred) or GEO (geographic/local retrieval). Point-in-time: brands may have changed since the scoring date. <a href=\"https://nohi.ai/research/readiness-index-2026-beauty\" target=\"_blank\">Full methodology</a>."
+}

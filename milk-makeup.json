@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "audit_title": "Agentic Commerce Readiness Audit \u2014 Beauty Edition 1",
+    "store_name": "Milk Makeup",
+    "store_url": "https://www.milkmakeup.com",
+    "audit_date": "2026-04-18",
+    "sampling_scope": "3 PDPs / 5 titles / sitemap + robots.txt + homepage",
+    "evidence_method": "source-level <code>httpx</code> fetch"
+  },
+  "score": {
+    "total": 6,
+    "max": 9,
+    "shape_label": "Strong Crawlability, Weak Structured Data",
+    "description": "Score is concentrated in Crawlability; Structured Data is the constraining area."
+  },
+  "areas": [
+    {
+      "num": 1,
+      "name": "Crawlability",
+      "score": 3,
+      "max": 3,
+      "passed": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "num": 2,
+      "name": "Structured data",
+      "score": 2,
+      "max": 4,
+      "passed": [
+        "C5",
+        "C7"
+      ]
+    },
+    {
+      "num": 3,
+      "name": "Content quality",
+      "score": 1,
+      "max": 2,
+      "passed": [
+        "C8"
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "title": "AI crawler access",
+      "area": 1,
+      "status": "pass",
+      "one_liner": "All 8 tested AI bots allowed in <code>robots.txt</code>.",
+      "log_summary": "<strong>AI crawler access.</strong> <code>robots.txt</code> allows all 8 tested bots (GPTBot / PerplexityBot / ClaudeBot / anthropic-ai / Google-Extended / Amazonbot / CCBot / FacebookBot)."
+    },
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "area": 1,
+      "status": "pass",
+      "one_liner": "3/3 sampled PDPs render title, price, description in raw HTML.",
+      "log_summary": "<strong>PDP server-side render.</strong> 3/3 sampled PDPs render all three core elements (title, price, description) in raw HTML without JS."
+    },
+    {
+      "id": "C3",
+      "title": "Sitemap freshness",
+      "area": 1,
+      "status": "pass",
+      "one_liner": "Sitemap has 285 URLs with fresh <code>&lt;lastmod&gt;</code> timestamps.",
+      "log_summary": "<strong>Sitemap freshness.</strong> Valid sitemap with 285 recently-updated URLs (most recent: 2026-04-01T14:27:24-04:00)."
+    },
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "2/3 PDPs have complete Product JSON-LD.",
+      "log_summary": "<strong>Product schema.</strong> 2/3 PDPs ship complete <code>Product</code> JSON-LD. Others missing required fields or the block entirely."
+    },
+    {
+      "id": "C5",
+      "title": "AggregateRating",
+      "area": 2,
+      "status": "pass",
+      "one_liner": "3/3 PDPs ship <code>AggregateRating</code> with real review counts.",
+      "log_summary": "<strong>AggregateRating.</strong> 3/3 PDPs carry rating schema with real <code>ratingValue</code> and <code>reviewCount</code>."
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "No <code>FAQPage</code> or <code>HowTo</code> schema on checked pages.",
+      "log_summary": "<strong>FAQPage / HowTo schema.</strong> Not present on homepage or auxiliary help pages."
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "area": 2,
+      "status": "pass",
+      "one_liner": "Organization JSON-LD present with <code>sameAs</code> array (6 profiles).",
+      "log_summary": "<strong>Organization schema.</strong> Homepage ships <code>Organization</code> JSON-LD with <code>name</code>, <code>url</code>, and <code>sameAs</code> (6 profiles)."
+    },
+    {
+      "id": "C8",
+      "title": "PDP titles",
+      "area": 3,
+      "status": "pass",
+      "one_liner": "5/5 sampled titles include use-case or differentiator cues.",
+      "log_summary": "<strong>PDP titles.</strong> 5/5 sampled titles include use-case specifics (fabric, fit, target audience)."
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "area": 3,
+      "status": "fail",
+      "one_liner": "1/5 descriptions answer buyer-context questions.",
+      "log_summary": "<strong>PDP descriptions.</strong> 1/5 sampled descriptions cover 3+ buyer-context cues. Others are spec-heavy with limited context."
+    }
+  ],
+  "findings": [
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs \u2014 raw HTML via source-level fetch"
+        },
+        {
+          "label": "Found",
+          "content": "Only 2/3 PDPs ship complete <code>Product</code> JSON-LD with all commonly-recommended fields (name, image, brand, offers.price, offers.availability, and an identifier)."
+        },
+        {
+          "label": "Fix",
+          "content": "Ensure every PDP template emits <code>Product</code> JSON-LD with the Google rich-results minimum fields. See <a href=\"https://developers.google.com/search/docs/appearance/structured-data/product\" target=\"_blank\">Google's product structured-data docs</a>."
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Homepage and discoverable FAQ / how-to-use / about pages"
+        },
+        {
+          "label": "Found",
+          "content": "No <code>FAQPage</code> or <code>HowTo</code> JSON-LD detected. If your store publishes how-to / routine content, it's currently invisible as structured data."
+        },
+        {
+          "label": "Fix",
+          "content": "Wrap existing FAQ content in <code>FAQPage</code> JSON-LD and any routine / tutorial content in <code>HowTo</code> JSON-LD. These map directly to the \"how do I use X\" queries AI shopping agents handle. <a href=\"https://schema.org/FAQPage\" target=\"_blank\">schema.org/FAQPage</a> / <a href=\"https://schema.org/HowTo\" target=\"_blank\">HowTo</a>."
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "5 sampled PDPs \u2014 full description text"
+        },
+        {
+          "label": "Found",
+          "content": "1/5 descriptions cover 3+ of: target skin/fit type, comparison to similar products, ingredient/material rationale, sizing reasoning, usage guidance, counter-indications. Most are spec-heavy with limited buyer context."
+        },
+        {
+          "label": "Caveat",
+          "content": "Evaluation via rendered-response text. Descriptions may include buyer-context content in expandable sections or tabs that weren't surfaced."
+        },
+        {
+          "label": "Fix",
+          "content": "Add a structured \"Why you'll love it\" block to every PDP \u2014 who it's for, how it compares, when to use, what it isn't for. At catalog scale this is a content pipeline (LLM-assisted generation from existing spec sheets is plausible)."
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "title": "Ship complete <code>Product</code> JSON-LD on every PDP",
+      "description": "Highest-leverage structured-data change. Ensures AI agents can extract name, price, availability, and identifiers cleanly. Lightweight if product data already exists server-side."
+    },
+    {
+      "title": "Wrap FAQ / how-to content in <code>FAQPage</code> or <code>HowTo</code> JSON-LD",
+      "description": "Maps directly to \"how do I use X\" queries AI shopping agents handle. Lightweight if the FAQ template has Q&amp;A as structured data; heavier if mixed with presentational HTML."
+    },
+    {
+      "title": "Expand PDP descriptions with buyer-context cues",
+      "description": "Who it's for, how it compares, when to use, what it isn't. The largest content project but touches every product, so compounds across the catalog. LLM-assisted generation from existing spec sheets is viable."
+    }
+  ],
+  "real_story": {
+    "heading": "The real story",
+    "paragraphs": [
+      "Milk Makeup is in the top tier of premium DTC beauty for agentic commerce readiness.",
+      "A 6/9 score places this brand above the median (4/9) across the 40 brands we audited. The remaining gaps are specific and fixable."
+    ]
+  },
+  "disclosure": "Part of the Nohi Agentic Commerce Readiness Index 2026 \u2014 Edition 1 (Premium DTC Beauty, 40 brands). Scoring via the <code>score_brand.py</code> audit tool on 2026-04-18. Findings are sample-based (3 PDPs / 5 titles). Does not audit uniqueness (C10, deferred) or GEO (geographic/local retrieval). Point-in-time: brands may have changed since the scoring date. <a href=\"https://nohi.ai/research/readiness-index-2026-beauty\" target=\"_blank\">Full methodology</a>."
+}

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Commerce Readiness Index 2026 — Edition 1</title>
+<style>
+:root {
+  --ink: #0f1419;
+  --ink-soft: #3c4853;
+  --ink-muted: #6b7680;
+  --pass: #0d8577;
+  --pass-bg: #e8f5f2;
+  --fail: #b5412d;
+  --fail-bg: #fbece7;
+  --warn: #b87520;
+  --warn-bg: #fdf3e4;
+  --bg: #fbfaf7;
+  --card: #ffffff;
+  --border: #e5e1d8;
+  --code-bg: #f4f1ec;
+  --accent: #2b4a5c;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+  color: var(--ink); background: var(--bg); margin: 0; line-height: 1.55; font-size: 16px;
+}
+main { max-width: 980px; margin: 0 auto; padding: 48px 24px 80px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
+h1 { font-size: 36px; line-height: 1.15; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.01em; }
+.subtitle { color: var(--ink-muted); font-size: 16px; margin: 0 0 28px; }
+.meta { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink-muted); flex-wrap: wrap; margin-bottom: 40px; }
+.meta strong { color: var(--ink-soft); font-weight: 600; }
+h2 { font-size: 22px; font-weight: 700; margin: 48px 0 16px; letter-spacing: -0.01em; }
+h2:first-of-type { margin-top: 0; }
+p { margin: 0 0 12px; color: var(--ink-soft); }
+
+/* Hero stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 40px; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+.stat-number { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.stat-number.pass { color: var(--pass); }
+.stat-number.fail { color: var(--fail); }
+.stat-label { font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-top: 8px; }
+
+/* Charts */
+.chart { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+.chart-title { font-size: 15px; font-weight: 600; margin: 0 0 16px; }
+.chart-label { font-size: 12px; fill: var(--ink-muted); }
+.chart-value { font-size: 12px; fill: var(--ink-soft); font-weight: 600; }
+.chart-bar { fill: var(--pass); }
+.chart-bar.weak { fill: var(--fail); }
+.chart-bar.medium { fill: var(--warn); }
+.chart-axis { stroke: var(--border); stroke-width: 1; }
+
+/* Tables */
+.panel { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background: var(--bg); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); font-weight: 700; }
+td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg); }
+td.num { font-family: ui-monospace, "SF Mono", Menlo, monospace; text-align: right; }
+td.score { font-weight: 600; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.brand-link { color: var(--ink); text-decoration: none; font-weight: 500; }
+.brand-link:hover { color: var(--accent); text-decoration: underline; }
+.score-mini { display: inline-flex; gap: 2px; margin-left: 8px; vertical-align: middle; }
+.score-mini span { width: 6px; height: 12px; border-radius: 1px; background: var(--border); }
+.score-mini span.pass { background: var(--pass); }
+.tier-label { font-size: 12px; color: var(--ink-muted); font-weight: 500; }
+
+/* Top-7 special styling */
+.top-tier tr { background: linear-gradient(90deg, rgba(13,133,119,0.04) 0%, transparent 100%); }
+
+footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink-muted); line-height: 1.6; }
+footer a { color: var(--accent); }
+
+@media (max-width: 640px) {
+  main { padding: 32px 16px 60px; }
+  h1 { font-size: 28px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .chart { padding: 16px; }
+  th, td { padding: 10px 12px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Research / Agentic Commerce Readiness Index</div>
+<h1>Agentic Commerce Readiness Index 2026 — Edition 1</h1>
+<p class="subtitle">Premium DTC Beauty — 40 brands</p>
+<div class="meta">
+  <div><strong>Edition date:</strong> 2026-04-18</div>
+  <div><strong>Methodology:</strong> <a href="https://github.com/Fifteen-AI/nohi-content-service/blob/main/memory/research/readiness-index/2026-edition-1-beauty/methodology.md">9 criteria, 3 areas</a></div>
+  <div><strong>Sample per brand:</strong> 3 PDPs / 5 titles / sitemap + robots + homepage</div>
+</div>
+
+<h2>Headline numbers</h2>
+
+<section class="stats">
+  <div class="stat">
+    <div class="stat-number">40</div>
+    <div class="stat-label">Brands scored</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number fail">0</div>
+    <div class="stat-label">Agent-Ready (≥7/9)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">4<span style="font-size:20px;color:var(--ink-muted);font-weight:500;">/9</span></div>
+    <div class="stat-label">Median score</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number pass">6<span style="font-size:20px;color:var(--ink-muted);font-weight:500;">/9</span></div>
+    <div class="stat-label">Top score (7 tied)</div>
+  </div>
+</section>
+
+
+
+<section class="chart">
+  <div class="chart-title">Score distribution</div>
+  <svg viewBox="0 0 900 240" width="100%" height="240">
+    <line class="chart-axis" x1="40" y1="196" x2="880" y2="196"/>
+    <rect class="chart-bar weak" x="212.0" y="145.7" width="76.0" height="50.3" rx="2"/><text class="chart-value" x="250.0" y="139.7" text-anchor="middle">4</text><rect class="chart-bar medium" x="296.0" y="20.0" width="76.0" height="176.0" rx="2"/><text class="chart-value" x="334.0" y="14.0" text-anchor="middle">14</text><rect class="chart-bar medium" x="380.0" y="120.6" width="76.0" height="75.4" rx="2"/><text class="chart-value" x="418.0" y="114.6" text-anchor="middle">6</text><rect class="chart-bar medium" x="464.0" y="82.9" width="76.0" height="113.1" rx="2"/><text class="chart-value" x="502.0" y="76.9" text-anchor="middle">9</text><rect class="chart-bar " x="548.0" y="108.0" width="76.0" height="88.0" rx="2"/><text class="chart-value" x="586.0" y="102.0" text-anchor="middle">7</text>
+    <text class="chart-label" x="82.0" y="216" text-anchor="middle">0</text><text class="chart-label" x="166.0" y="216" text-anchor="middle">1</text><text class="chart-label" x="250.0" y="216" text-anchor="middle">2</text><text class="chart-label" x="334.0" y="216" text-anchor="middle">3</text><text class="chart-label" x="418.0" y="216" text-anchor="middle">4</text><text class="chart-label" x="502.0" y="216" text-anchor="middle">5</text><text class="chart-label" x="586.0" y="216" text-anchor="middle">6</text><text class="chart-label" x="670.0" y="216" text-anchor="middle">7</text><text class="chart-label" x="754.0" y="216" text-anchor="middle">8</text><text class="chart-label" x="838.0" y="216" text-anchor="middle">9</text>
+    <text class="chart-label" x="450.0" y="234" text-anchor="middle" font-weight="600">Score (out of 9)</text>
+  </svg>
+</section>
+
+
+<section class="chart">
+  <div class="chart-title">Pass rate per criterion — weakest first</div>
+  <p style="font-size:13px;margin-bottom:16px;">Where the readiness gap actually lives.</p>
+  <svg viewBox="0 0 900 328" width="100%" height="328">
+    <text class="chart-label" x="210" y="40.0" text-anchor="end" font-weight="500">C6 — FAQPage / HowTo schema</text><rect class="chart-bar weak" x="220" y="24" width="78.8" height="24" rx="3"/><text class="chart-value" x="306.8" y="40.0">12% (5/40)</text><text class="chart-label" x="210" y="72.0" text-anchor="end" font-weight="500">C9 — Description depth</text><rect class="chart-bar weak" x="220" y="56" width="78.8" height="24" rx="3"/><text class="chart-value" x="306.8" y="72.0">12% (5/40)</text><text class="chart-label" x="210" y="104.0" text-anchor="end" font-weight="500">C5 — AggregateRating</text><rect class="chart-bar medium" x="220" y="88" width="189.0" height="24" rx="3"/><text class="chart-value" x="417.0" y="104.0">30% (12/40)</text><text class="chart-label" x="210" y="136.0" text-anchor="end" font-weight="500">C4 — Product schema</text><rect class="chart-bar medium" x="220" y="120" width="236.2" height="24" rx="3"/><text class="chart-value" x="464.2" y="136.0">37% (15/40)</text><text class="chart-label" x="210" y="168.0" text-anchor="end" font-weight="500">C8 — PDP titles</text><rect class="chart-bar medium" x="220" y="152" width="252.0" height="24" rx="3"/><text class="chart-value" x="480.0" y="168.0">40% (16/40)</text><text class="chart-label" x="210" y="200.0" text-anchor="end" font-weight="500">C3 — Sitemap freshness</text><rect class="chart-bar medium" x="220" y="184" width="299.2" height="24" rx="3"/><text class="chart-value" x="527.2" y="200.0">47% (19/40)</text><text class="chart-label" x="210" y="232.0" text-anchor="end" font-weight="500">C7 — Organization schema</text><rect class="chart-bar " x="220" y="216" width="362.2" height="24" rx="3"/><text class="chart-value" x="590.2" y="232.0">57% (23/40)</text><text class="chart-label" x="210" y="264.0" text-anchor="end" font-weight="500">C2 — PDP server-side render</text><rect class="chart-bar " x="220" y="248" width="456.8" height="24" rx="3"/><text class="chart-value" x="684.8" y="264.0">72% (29/40)</text><text class="chart-label" x="210" y="296.0" text-anchor="end" font-weight="500">C1 — AI crawler access</text><rect class="chart-bar " x="220" y="280" width="582.8" height="24" rx="3"/><text class="chart-value" x="810.8" y="296.0">92% (37/40)</text>
+  </svg>
+</section>
+
+
+
+<h2>Top tier (score ≥ 6)</h2>
+<div class="panel top-tier">
+  <table>
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Score</th>
+        <th>Crawl</th>
+        <th>Struct</th>
+        <th>Content</th>
+        <th>Shape</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><a class="brand-link" href="ceremonia.html">Ceremonia</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Structured Data</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="hero-cosmetics.html">Hero Cosmetics</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">3/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Content Quality</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="krave-beauty.html">Krave Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">3/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Content Quality</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="milk-makeup.html">Milk Makeup</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Structured Data</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="osea-malibu.html">OSEA Malibu</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Structured Data</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="phlur.html">Phlur</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">2/3</td>
+      <td class="num">3/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Partially Ready</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="rare-beauty.html">Rare Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">2/3</td>
+      <td class="num">3/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Partially Ready</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h2>All 40 brands</h2>
+<p>Sorted by score, ties broken alphabetically. Click any brand for the full audit.</p>
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Score</th>
+        <th>Crawl</th>
+        <th>Struct</th>
+        <th>Content</th>
+        <th>Shape</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><a class="brand-link" href="ceremonia.html">Ceremonia</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Structured Data</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="hero-cosmetics.html">Hero Cosmetics</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">3/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Content Quality</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="krave-beauty.html">Krave Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">3/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Content Quality</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="milk-makeup.html">Milk Makeup</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Structured Data</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="osea-malibu.html">OSEA Malibu</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Crawlability, Weak Structured Data</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="phlur.html">Phlur</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">2/3</td>
+      <td class="num">3/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Partially Ready</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="rare-beauty.html">Rare Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">6/9</td>
+      <td class="num">2/3</td>
+      <td class="num">3/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Partially Ready</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="boy-smells.html">Boy Smells</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">2/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="bubble-skincare.html">Bubble Skincare</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">3/3</td>
+      <td class="num">2/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Accessible but Under-Structured</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="glow-recipe.html">Glow Recipe</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">2/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="hairstory.html">Hairstory</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">2/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="half-magic-beauty.html">Half Magic Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">3/3</td>
+      <td class="num">1/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="peach-lily.html">Peach &amp; Lily</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">3/3</td>
+      <td class="num">1/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="rose-inc.html">Rose Inc.</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">2/3</td>
+      <td class="num">3/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="summer-fridays.html">Summer Fridays</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">2/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="tower-28-beauty.html">Tower 28 Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">5/9</td>
+      <td class="num">2/3</td>
+      <td class="num">3/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="beauty-of-joseon.html">Beauty of Joseon</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">4/9</td>
+      <td class="num">2/3</td>
+      <td class="num">2/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Accessible but Under-Structured</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="farmacy-beauty.html">Farmacy Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">4/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="freck-beauty.html">Freck Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">4/9</td>
+      <td class="num">1/3</td>
+      <td class="num">2/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="humanrace.html">Humanrace</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">4/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="lys-beauty.html">LYS Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">4/9</td>
+      <td class="num">2/3</td>
+      <td class="num">2/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Accessible but Under-Structured</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="vegamour.html">Vegamour</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">4/9</td>
+      <td class="num">3/3</td>
+      <td class="num">0/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="about-face-beauty.html">About-Face Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="briogeo.html">Briogeo</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">0/3</td>
+      <td class="num">1/4</td>
+      <td class="num">2/2</td>
+      <td class="tier-label">Early Stage</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="dedcool.html">Dedcool</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">1/3</td>
+      <td class="num">2/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Accessible but Under-Structured</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="function-of-beauty.html">Function of Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="herbivore-botanicals.html">Herbivore Botanicals</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">1/3</td>
+      <td class="num">2/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Accessible but Under-Structured</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="innersense.html">Innersense</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="kosas.html">Kosas</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="merit-beauty.html">Merit Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="moon-juice.html">Moon Juice</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">3/3</td>
+      <td class="num">0/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="n-cessaire.html">Nécessaire</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">1/3</td>
+      <td class="num">2/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Accessible but Under-Structured</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="saie.html">Saie</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="then-i-met-you.html">Then I Met You</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">1/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="three-ships-beauty.html">Three Ships Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">2/3</td>
+      <td class="num">1/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="westman-atelier.html">Westman Atelier</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">3/9</td>
+      <td class="num">3/3</td>
+      <td class="num">0/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Strong Foundations, Missing Structured Layer</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="d-s-durga.html">D.S. &amp; Durga</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">2/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Not Ready — multiple foundation gaps</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="ilia-beauty.html">Ilia Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">2/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Not Ready — multiple foundation gaps</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="kulfi-beauty.html">Kulfi Beauty</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">2/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Not Ready — multiple foundation gaps</td>
+    </tr>
+    <tr>
+      <td><a class="brand-link" href="the-nue-co.html">The Nue Co</a><span class="score-mini"><span class="pass"></span><span class="pass"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></span></td>
+      <td class="score">2/9</td>
+      <td class="num">2/3</td>
+      <td class="num">0/4</td>
+      <td class="num">0/2</td>
+      <td class="tier-label">Not Ready — multiple foundation gaps</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<footer>
+  <p>Each brand's full audit is linked above. Scoring via source-level HTTP fetches on 2026-04-18. Methodology stable across editions for year-over-year comparison. Does not audit uniqueness (C10, deferred) or geographic / local retrieval (GEO).</p>
+  <p style="margin-top:12px;">Generated by <a href="https://github.com/zhao-hanbo/agentic-commerce-kit">agentic-commerce-kit</a> — the Readiness Index methodology as a Claude Code skill.</p>
+</footer>
+</main>
+</body>
+</html>

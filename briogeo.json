@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "audit_title": "Agentic Commerce Readiness Audit \u2014 Beauty Edition 1",
+    "store_name": "Briogeo",
+    "store_url": "https://briogeohair.com",
+    "audit_date": "2026-04-18",
+    "sampling_scope": "3 PDPs / 5 titles / sitemap + robots.txt + homepage",
+    "evidence_method": "source-level <code>httpx</code> fetch"
+  },
+  "score": {
+    "total": 3,
+    "max": 9,
+    "shape_label": "Early Stage",
+    "description": "Some infrastructure in place; most agent-readiness criteria still need work."
+  },
+  "areas": [
+    {
+      "num": 1,
+      "name": "Crawlability",
+      "score": 0,
+      "max": 3,
+      "passed": []
+    },
+    {
+      "num": 2,
+      "name": "Structured data",
+      "score": 1,
+      "max": 4,
+      "passed": [
+        "C6"
+      ]
+    },
+    {
+      "num": 3,
+      "name": "Content quality",
+      "score": 2,
+      "max": 2,
+      "passed": [
+        "C8",
+        "C9"
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "title": "AI crawler access",
+      "area": 1,
+      "status": "fail",
+      "one_liner": "0 AI bots blocked in <code>robots.txt</code>.",
+      "log_summary": "<strong>AI crawler access.</strong> <code>robots.txt</code> blocks: . Allowed: 0."
+    },
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "area": 1,
+      "status": "fail",
+      "one_liner": "Only 0/3 sampled PDPs render all core elements in raw HTML.",
+      "log_summary": "<strong>PDP server-side render.</strong> 0/3 sampled PDPs return complete product data without JS. Others missing one or more of title/price/description."
+    },
+    {
+      "id": "C3",
+      "title": "Sitemap freshness",
+      "area": 1,
+      "status": "fail",
+      "one_liner": "Sitemap missing, invalid, or stale.",
+      "log_summary": "<strong>Sitemap freshness.</strong> No valid sitemap with recent <code>&lt;lastmod&gt;</code> within 90 days."
+    },
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "0/3 PDPs have complete Product JSON-LD.",
+      "log_summary": "<strong>Product schema.</strong> 0/3 PDPs ship complete <code>Product</code> JSON-LD. Others missing required fields or the block entirely."
+    },
+    {
+      "id": "C5",
+      "title": "AggregateRating",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "0/3 PDPs ship Review or AggregateRating schema.",
+      "log_summary": "<strong>AggregateRating.</strong> 0/3 PDPs carry rating schema. Reviews likely displayed visually but not exposed as structured data on others."
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "area": 2,
+      "status": "pass",
+      "one_liner": "FAQPage/HowTo schema found on 1 checked page(s).",
+      "log_summary": "<strong>FAQPage / HowTo schema.</strong> Found on 1 page(s) \u2014 homepage or help/how-to surface."
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "Organization schema missing: <code>name</code>, <code>sameAs</code>.",
+      "log_summary": "<strong>Organization schema.</strong> Missing <code>name</code>, <code>sameAs</code> on homepage."
+    },
+    {
+      "id": "C8",
+      "title": "PDP titles",
+      "area": 3,
+      "status": "pass",
+      "one_liner": "4/5 sampled titles include use-case or differentiator cues.",
+      "log_summary": "<strong>PDP titles.</strong> 4/5 sampled titles include use-case specifics (fabric, fit, target audience)."
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "area": 3,
+      "status": "pass",
+      "one_liner": "4/5 descriptions answer comparison / context questions.",
+      "log_summary": "<strong>PDP descriptions.</strong> 4/5 sampled descriptions address 3+ buyer-context cues (fit, comparison, ingredient rationale, usage, counter-indications)."
+    }
+  ],
+  "findings": [
+    {
+      "id": "C1",
+      "title": "AI crawler access",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Briogeo/robots.txt"
+        },
+        {
+          "label": "Found",
+          "content": "The following AI crawlers are blocked by explicit <code>Disallow</code> rules: ."
+        },
+        {
+          "label": "Fix",
+          "content": "Add explicit <code>Allow</code> rules for the tested AI crawlers, or remove the <code>Disallow: /</code> entries that match them. AI shopping surfaces rely on these bots to index product data."
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs via raw HTML fetch"
+        },
+        {
+          "label": "Found",
+          "content": "3 of 3 PDPs don't render all core fields in raw HTML. Missing: title. Examples: <code>dont-despair-repair-deep-conditioning-mask</code>, <code>be-gentle-be-kind-aloe-oat-milk-ultra-soothing-conditioner</code>."
+        },
+        {
+          "label": "Fix",
+          "content": "Audit the product-template rendering path to confirm title/price/description appear in raw HTML without JS. Agents cannot execute JavaScript on merchant sites."
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "title": "Sitemap freshness",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "<code>Briogeo/sitemap.xml</code>"
+        },
+        {
+          "label": "Found",
+          "content": "Sitemap missing, invalid XML, or has no <code>&lt;lastmod&gt;</code> timestamp within the past 90 days."
+        },
+        {
+          "label": "Fix",
+          "content": "Generate a valid sitemap that includes product URLs with accurate <code>&lt;lastmod&gt;</code> timestamps, and keep it current. Shopify emits this automatically for standard themes."
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs \u2014 raw HTML via source-level fetch"
+        },
+        {
+          "label": "Found",
+          "content": "Only 0/3 PDPs ship complete <code>Product</code> JSON-LD with all commonly-recommended fields (name, image, brand, offers.price, offers.availability, and an identifier)."
+        },
+        {
+          "label": "Fix",
+          "content": "Ensure every PDP template emits <code>Product</code> JSON-LD with the Google rich-results minimum fields. See <a href=\"https://developers.google.com/search/docs/appearance/structured-data/product\" target=\"_blank\">Google's product structured-data docs</a>."
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "title": "AggregateRating",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs \u2014 <code>Review</code> / <code>AggregateRating</code> schema"
+        },
+        {
+          "label": "Found",
+          "content": "0/3 PDPs expose rating data as JSON-LD with real <code>ratingValue</code> and <code>reviewCount</code>. Others likely display reviews visually but don't emit structured data \u2014 typically a widget toggle that hasn't been enabled."
+        },
+        {
+          "label": "Fix",
+          "content": "Enable review-schema output in your review plugin (Yotpo, Judge.me, Okendo, etc.) \u2014 often a single setting. See <a href=\"https://schema.org/AggregateRating\" target=\"_blank\">schema.org/AggregateRating</a>."
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Homepage for <code>Organization</code> JSON-LD"
+        },
+        {
+          "label": "Found",
+          "content": "Organization schema missing or incomplete. Missing: <code>name</code>, <code>sameAs</code>. <code>sameAs</code> should link to at least 2 social profiles for entity recognition."
+        },
+        {
+          "label": "Fix",
+          "content": "Add (or extend) <code>Organization</code> JSON-LD in the site-wide <code>&lt;head&gt;</code>: <code>name</code>, <code>url</code>, <code>logo</code>, and a <code>sameAs</code> array of verified social-profile URLs. Low risk, high leverage for AI entity recognition."
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "title": "Ship complete <code>Product</code> JSON-LD on every PDP",
+      "description": "Highest-leverage structured-data change. Ensures AI agents can extract name, price, availability, and identifiers cleanly. Lightweight if product data already exists server-side."
+    },
+    {
+      "title": "Enable <code>AggregateRating</code> output in your review plugin",
+      "description": "Usually a single setting in Yotpo / Judge.me / Okendo that exposes existing review data as JSON-LD. Reviews already live on the site \u2014 this just makes them machine-readable."
+    },
+    {
+      "title": "Add complete <code>Organization</code> JSON-LD with <code>sameAs</code>",
+      "description": "10-line site-wide <code>&lt;head&gt;</code> addition \u2014 name, url, logo, and links to verified social profiles. Low risk, foundational for AI entity recognition."
+    }
+  ],
+  "real_story": {
+    "heading": "The real story",
+    "paragraphs": [
+      "Briogeo has foundational gaps that limit agent visibility.",
+      "A 3/9 score means multiple layers need attention. Prioritize structured-data basics (C1, C2, C3) before content-level work."
+    ]
+  },
+  "disclosure": "Part of the Nohi Agentic Commerce Readiness Index 2026 \u2014 Edition 1 (Premium DTC Beauty, 40 brands). Scoring via the <code>score_brand.py</code> audit tool on 2026-04-18. Findings are sample-based (3 PDPs / 5 titles). Does not audit uniqueness (C10, deferred) or GEO (geographic/local retrieval). Point-in-time: brands may have changed since the scoring date. <a href=\"https://nohi.ai/research/readiness-index-2026-beauty\" target=\"_blank\">Full methodology</a>."
+}

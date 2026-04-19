@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "audit_title": "Agentic Commerce Readiness Audit \u2014 Beauty Edition 1",
+    "store_name": "Herbivore Botanicals",
+    "store_url": "https://www.herbivorebotanicals.com",
+    "audit_date": "2026-04-18",
+    "sampling_scope": "3 PDPs / 5 titles / sitemap + robots.txt + homepage",
+    "evidence_method": "source-level <code>httpx</code> fetch"
+  },
+  "score": {
+    "total": 3,
+    "max": 9,
+    "shape_label": "Accessible but Under-Structured",
+    "description": "Content is reachable, but the machine-readable layer is thin. Schema and description depth are the constraints."
+  },
+  "areas": [
+    {
+      "num": 1,
+      "name": "Crawlability",
+      "score": 1,
+      "max": 3,
+      "passed": [
+        "C1"
+      ]
+    },
+    {
+      "num": 2,
+      "name": "Structured data",
+      "score": 2,
+      "max": 4,
+      "passed": [
+        "C4",
+        "C5"
+      ]
+    },
+    {
+      "num": 3,
+      "name": "Content quality",
+      "score": 0,
+      "max": 2,
+      "passed": []
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "title": "AI crawler access",
+      "area": 1,
+      "status": "pass",
+      "one_liner": "All 8 tested AI bots allowed in <code>robots.txt</code>.",
+      "log_summary": "<strong>AI crawler access.</strong> <code>robots.txt</code> allows all 8 tested bots (GPTBot / PerplexityBot / ClaudeBot / anthropic-ai / Google-Extended / Amazonbot / CCBot / FacebookBot)."
+    },
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "area": 1,
+      "status": "fail",
+      "one_liner": "Only 0/3 sampled PDPs render all core elements in raw HTML.",
+      "log_summary": "<strong>PDP server-side render.</strong> 0/3 sampled PDPs return complete product data without JS. Others missing one or more of title/price/description."
+    },
+    {
+      "id": "C3",
+      "title": "Sitemap freshness",
+      "area": 1,
+      "status": "fail",
+      "one_liner": "Sitemap missing, invalid, or stale.",
+      "log_summary": "<strong>Sitemap freshness.</strong> No valid sitemap with recent <code>&lt;lastmod&gt;</code> within 90 days."
+    },
+    {
+      "id": "C4",
+      "title": "Product schema",
+      "area": 2,
+      "status": "pass",
+      "one_liner": "3/3 PDPs ship valid Product JSON-LD with required fields.",
+      "log_summary": "<strong>Product schema.</strong> 3/3 PDPs have complete <code>Product</code> JSON-LD (name, image, brand, offers, identifier)."
+    },
+    {
+      "id": "C5",
+      "title": "AggregateRating",
+      "area": 2,
+      "status": "pass",
+      "one_liner": "3/3 PDPs ship <code>AggregateRating</code> with real review counts.",
+      "log_summary": "<strong>AggregateRating.</strong> 3/3 PDPs carry rating schema with real <code>ratingValue</code> and <code>reviewCount</code>."
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "No <code>FAQPage</code> or <code>HowTo</code> schema on checked pages.",
+      "log_summary": "<strong>FAQPage / HowTo schema.</strong> Not present on homepage or auxiliary help pages."
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "area": 2,
+      "status": "fail",
+      "one_liner": "Organization schema missing: <code>sameAs</code>.",
+      "log_summary": "<strong>Organization schema.</strong> Missing <code>sameAs</code> on homepage."
+    },
+    {
+      "id": "C8",
+      "title": "PDP titles",
+      "area": 3,
+      "status": "fail",
+      "one_liner": "3/5 sampled titles include differentiator cues.",
+      "log_summary": "<strong>PDP titles.</strong> 3/5 sampled titles go beyond brand + generic category."
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "area": 3,
+      "status": "fail",
+      "one_liner": "2/5 descriptions answer buyer-context questions.",
+      "log_summary": "<strong>PDP descriptions.</strong> 2/5 sampled descriptions cover 3+ buyer-context cues. Others are spec-heavy with limited context."
+    }
+  ],
+  "findings": [
+    {
+      "id": "C2",
+      "title": "PDP server-side render",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "3 sampled PDPs via raw HTML fetch"
+        },
+        {
+          "label": "Found",
+          "content": "3 of 3 PDPs don't render all core fields in raw HTML. Missing: title. Examples: <code>coco-rose-tremella-cleansing-oil-body-wash</code>, <code>nova-turmeric-pineapple-body-polish</code>."
+        },
+        {
+          "label": "Fix",
+          "content": "Audit the product-template rendering path to confirm title/price/description appear in raw HTML without JS. Agents cannot execute JavaScript on merchant sites."
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "title": "Sitemap freshness",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "<code>Herbivore Botanicals/sitemap.xml</code>"
+        },
+        {
+          "label": "Found",
+          "content": "Sitemap missing, invalid XML, or has no <code>&lt;lastmod&gt;</code> timestamp within the past 90 days."
+        },
+        {
+          "label": "Fix",
+          "content": "Generate a valid sitemap that includes product URLs with accurate <code>&lt;lastmod&gt;</code> timestamps, and keep it current. Shopify emits this automatically for standard themes."
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "title": "FAQPage / HowTo schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Homepage and discoverable FAQ / how-to-use / about pages"
+        },
+        {
+          "label": "Found",
+          "content": "No <code>FAQPage</code> or <code>HowTo</code> JSON-LD detected. If your store publishes how-to / routine content, it's currently invisible as structured data."
+        },
+        {
+          "label": "Fix",
+          "content": "Wrap existing FAQ content in <code>FAQPage</code> JSON-LD and any routine / tutorial content in <code>HowTo</code> JSON-LD. These map directly to the \"how do I use X\" queries AI shopping agents handle. <a href=\"https://schema.org/FAQPage\" target=\"_blank\">schema.org/FAQPage</a> / <a href=\"https://schema.org/HowTo\" target=\"_blank\">HowTo</a>."
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "title": "Organization schema",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "Homepage for <code>Organization</code> JSON-LD"
+        },
+        {
+          "label": "Found",
+          "content": "Organization schema missing or incomplete. Missing: <code>sameAs</code>. <code>sameAs</code> should link to at least 2 social profiles for entity recognition."
+        },
+        {
+          "label": "Fix",
+          "content": "Add (or extend) <code>Organization</code> JSON-LD in the site-wide <code>&lt;head&gt;</code>: <code>name</code>, <code>url</code>, <code>logo</code>, and a <code>sameAs</code> array of verified social-profile URLs. Low risk, high leverage for AI entity recognition."
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "title": "PDP titles",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "5 PDP titles sampled from the sitemap"
+        },
+        {
+          "label": "Found",
+          "content": "Only 3/5 titles include specific use-case, target audience, or differentiator cues. Examples: \"GREEN MAGIC Centella + Ceramides Soothing Face Serum\", \"EVENING RESTORATIVE Bodycare Set\"."
+        },
+        {
+          "label": "Fix",
+          "content": "Expand generic titles (\"Brand Name Face Cream\") with specific differentiators (\"Retinol Alternative Night Serum for Sensitive Skin\"). Titles match the natural-language shopper queries AI agents parse."
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "title": "Description depth",
+      "pill": "fail",
+      "pill_label": "Fail",
+      "fields": [
+        {
+          "label": "Checked",
+          "content": "5 sampled PDPs \u2014 full description text"
+        },
+        {
+          "label": "Found",
+          "content": "2/5 descriptions cover 3+ of: target skin/fit type, comparison to similar products, ingredient/material rationale, sizing reasoning, usage guidance, counter-indications. Most are spec-heavy with limited buyer context."
+        },
+        {
+          "label": "Caveat",
+          "content": "Evaluation via rendered-response text. Descriptions may include buyer-context content in expandable sections or tabs that weren't surfaced."
+        },
+        {
+          "label": "Fix",
+          "content": "Add a structured \"Why you'll love it\" block to every PDP \u2014 who it's for, how it compares, when to use, what it isn't for. At catalog scale this is a content pipeline (LLM-assisted generation from existing spec sheets is plausible)."
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "title": "Add complete <code>Organization</code> JSON-LD with <code>sameAs</code>",
+      "description": "10-line site-wide <code>&lt;head&gt;</code> addition \u2014 name, url, logo, and links to verified social profiles. Low risk, foundational for AI entity recognition."
+    },
+    {
+      "title": "Wrap FAQ / how-to content in <code>FAQPage</code> or <code>HowTo</code> JSON-LD",
+      "description": "Maps directly to \"how do I use X\" queries AI shopping agents handle. Lightweight if the FAQ template has Q&amp;A as structured data; heavier if mixed with presentational HTML."
+    },
+    {
+      "title": "Expand PDP descriptions with buyer-context cues",
+      "description": "Who it's for, how it compares, when to use, what it isn't. The largest content project but touches every product, so compounds across the catalog. LLM-assisted generation from existing spec sheets is viable."
+    }
+  ],
+  "real_story": {
+    "heading": "The real story",
+    "paragraphs": [
+      "Herbivore Botanicals has foundational gaps that limit agent visibility.",
+      "A 3/9 score means multiple layers need attention. Prioritize structured-data basics (C2, C3, C6) before content-level work."
+    ]
+  },
+  "disclosure": "Part of the Nohi Agentic Commerce Readiness Index 2026 \u2014 Edition 1 (Premium DTC Beauty, 40 brands). Scoring via the <code>score_brand.py</code> audit tool on 2026-04-18. Findings are sample-based (3 PDPs / 5 titles). Does not audit uniqueness (C10, deferred) or GEO (geographic/local retrieval). Point-in-time: brands may have changed since the scoring date. <a href=\"https://nohi.ai/research/readiness-index-2026-beauty\" target=\"_blank\">Full methodology</a>."
+}
