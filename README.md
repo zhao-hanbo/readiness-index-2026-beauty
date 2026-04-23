@@ -26,11 +26,17 @@ capabilities) can find, parse, and recommend them.
 - **Structured data**: every `.json` file is the same audit in
   machine-readable form. Use these for cross-brand analysis.
 
-## Methodology
+## Raw data (free to download, CC BY 4.0)
 
-Full methodology document:
-[`nohi-content-service/memory/research/readiness-index/2026-edition-1-beauty/methodology.md`](https://github.com/Fifteen-AI/nohi-content-service/blob/main/memory/research/readiness-index/2026-edition-1-beauty/methodology.md)
-(private — contact author for access)
+| File | What it contains |
+|---|---|
+| [`scores.csv`](./scores.csv) | Per-brand total + area subtotals + 9 binary criteria for all 40 ranked brands. Spreadsheet-friendly. |
+| [`scores.details.jsonl`](./scores.details.jsonl) | Per-criterion evidence per brand: which URLs were checked, which bots are allowed, which PDPs have schema, sample titles evaluated, etc. One JSON object per line. |
+| [`brands.csv`](./brands.csv) | Full candidate list (50 brands, including the 10 excluded) with sourcing notes. |
+| [`methodology.md`](./methodology.md) | The rubric, sampling method, and scoring automation stack in full. |
+| [`notable-findings.md`](./notable-findings.md) | Top 10 patterns surfaced during scoring, including the Content Cliff and Hero Cosmetics anomaly. |
+
+Data and audits released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — free to cite, reanalyze, and build on with attribution.
 
 The 9 criteria:
 

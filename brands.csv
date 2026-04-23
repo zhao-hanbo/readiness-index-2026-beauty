@@ -1,0 +1,51 @@
+rank_seed,brand,url,sub_category,aov_bracket,shopify_confirmed,notes
+1,Summer Fridays,https://www.summerfridays.com,skincare,$50-90,likely,Founder-driven premium skincare; has robust PDPs historically
+2,Glow Recipe,https://www.glowrecipe.com,skincare,$30-60,likely,K-beauty inspired; strong review integration
+3,Tata Harper,https://www.tataharper.com,skincare,$75-150,likely,Vermont-based green beauty; luxury-adjacent
+4,Herbivore Botanicals,https://www.herbivorebotanicals.com,skincare,$30-65,likely,Seattle natural skincare; strong DTC presence
+5,Youth To The People,https://www.youthtothepeople.com,skincare,$40-75,unverified,May be on custom stack post-L'Oreal acquisition; verify Shopify
+6,Kosas,https://www.kosas.com,makeup,$25-60,likely,Clean makeup; diverse shade ranges
+7,Ilia Beauty,https://iliabeauty.com,makeup,$30-60,unverified,Clean makeup; verify Shopify
+8,Merit Beauty,https://www.meritbeauty.com,makeup,$25-40,likely,Minimalist makeup DTC
+9,Saie,https://www.saiehello.com,makeup,$20-40,likely,Clean makeup, diverse tinted products
+10,Tower 28 Beauty,https://www.tower28beauty.com,makeup,$20-40,likely,Sensitive-skin-safe makeup; strong ingredient story
+11,Topicals,https://topicals.com,skincare,$30-45,likely,Black-founded; chronic skin conditions focus
+12,Westman Atelier,https://westman-atelier.com,makeup,$50-130,likely,Gucci Westman-founded premium makeup
+13,Rose Inc.,https://www.roseinc.com,makeup,$30-70,likely,Rosie Huntington-Whiteley founded
+14,Drunk Elephant,https://www.drunkelephant.com,skincare,$40-90,unverified,Shiseido-owned; verify Shopify still
+15,Beauty of Joseon,https://beautyofjoseon.com,skincare,$15-35,likely,Korean skincare; global DTC
+16,Krave Beauty,https://kravebeauty.com,skincare,$20-35,likely,Liah Yoo founded; Asian-American beauty
+17,Then I Met You,https://thenimetyou.com,skincare,$40-65,likely,Charlotte Cho / SOKOGLAM founder
+18,Peach & Lily,https://www.peachandlily.com,skincare,$20-65,likely,Alicia Yoon; K-beauty curator and brand
+19,Biossance,https://www.biossance.com,skincare,$40-80,unverified,Amyris spinoff; may be on custom stack
+20,Farmacy Beauty,https://www.farmacybeauty.com,skincare,$30-65,unverified,Verify Shopify post-P&G acquisition
+21,Rare Beauty,https://www.rarebeauty.com,makeup,$20-30,likely,Selena Gomez founded; huge social following
+22,Item Beauty,https://itembeauty.com,makeup,$15-25,likely,Addison Rae co-founded; TikTok-native
+23,Kulfi Beauty,https://kulfibeauty.com,makeup,$20-35,likely,South Asian beauty; diverse shade ranges
+24,Half Magic Beauty,https://halfmagicbeauty.com,makeup,$15-30,likely,Donni Davy (Euphoria MUA) founded
+25,Milk Makeup,https://www.milkmakeup.com,makeup,$20-40,unverified,Verify Shopify
+26,About-Face Beauty,https://www.aboutface.com,makeup,$10-25,likely,Halsey founded; Gen-Z focus
+27,Violette_FR,https://www.violetteschmidt.com,makeup,$30-50,likely,French beauty editor founded
+28,Briogeo,https://briogeohair.com,haircare,$25-60,unverified,Nancy Twine founded; Wella-acquired — verify DTC still Shopify
+29,Vegamour,https://vegamour.com,haircare,$40-95,likely,Plant-based haircare; strong DTC
+30,Hairstory,https://www.hairstory.com,haircare,$30-65,likely,No-shampoo New Wash system
+31,Innersense,https://innersensebeauty.com,haircare,$25-60,likely,Clean beauty haircare
+32,Function of Beauty,https://www.functionofbeauty.com,haircare,$40-80,likely,Customized DTC haircare; pioneer of the model
+33,Ceremonia,https://ceremonia.com,haircare,$25-50,likely,Babba Rivera founded; Latinx beauty
+34,Adwoa Beauty,https://adwoabeauty.com,haircare,$20-40,likely,Textured hair focus; Black-founded
+35,Phlur,https://www.phlur.com,fragrance,$60-100,likely,Clean fragrance; Missing Person viral
+36,D.S. & Durga,https://dsanddurga.com,fragrance,$80-150,likely,Niche fragrance; Brooklyn-based
+37,Boy Smells,https://www.boysmells.com,fragrance,$35-100,likely,Candles + fragrance; queer-founded
+38,Dedcool,https://dedcool.com,fragrance,$40-120,likely,Fragrance + bath; Gen-Z positioning
+39,Nécessaire,https://necessaire.com,body,$20-30,likely,Body care as skincare; minimalist aesthetic
+40,OSEA Malibu,https://oseamalibu.com,body,$30-75,likely,Seaweed-based body and skincare
+41,Humanrace,https://humanrace.com,skincare,$35-60,likely,Pharrell-founded; simplified skincare
+42,Three Ships Beauty,https://threeshipsbeauty.com,skincare,$25-55,likely,Canadian clean beauty
+43,Freck Beauty,https://freckbeauty.com,makeup,$15-30,likely,Freckle makeup; Gen-Z cult following
+44,Hero Cosmetics,https://www.herocosmetics.us,skincare,$10-25,unverified,Mighty Patch brand; verify Shopify post-Church & Dwight acq
+45,Bubble Skincare,https://www.bubbleskincare.com,skincare,$15-25,likely,Gen-Z teen skincare
+46,LYS Beauty,https://lysbeauty.com,makeup,$15-25,likely,Black-founded inclusive makeup; Sephora-first
+47,Ami Colé,https://amicole.com,makeup,$20-35,likely,Senegalese-American founded; melanin-rich skin
+48,Pinch of Color,https://pinchofcolor.com,makeup,$20-40,likely,Smaller indie; color-focused
+49,Moon Juice,https://moonjuice.com,skincare,$30-75,likely,Beauty-wellness overlap; Amanda Chantal Bacon
+50,The Nue Co,https://thenueco.com,skincare,$35-75,likely,Supplement-skincare bridge; well-designed DTC
